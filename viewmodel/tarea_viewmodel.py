@@ -4,25 +4,25 @@ from repo.repo_tarea import TareaRepository
 
 
 class TareaViewModel:
-    '''ViewModel para gestión de tareas'''
+    #viewmodel para gestión de tareas
     def __init__(self):
         self.repository = TareaRepository()
     
     def validar_importancia(self, importancia: int) -> bool:
-        '''Valida que la importancia esté en el rango correcto'''
+        #valida que la importancia esté en el rango correcto
         return importancia in [1, 2, 3]
     
     def validar_categoria(self, categoria: int) -> bool:
-        '''Valida que la categoría esté en el rango correcto'''
+        #valida que la categoría esté en el rango correcto
         return categoria in [1, 2, 3]
     
     def validar_tiempo(self, tiempo: int) -> bool:
-        '''Valida que el tiempo sea positivo'''
+        #valida que el tiempo sea positivo
         return tiempo > 0
     
     def agregar_tarea(self, username: str, nombre: str, importancia: int, 
                       categoria: int, tiempo: int) -> tuple[bool, str]:
-        '''Agrega una nueva tarea. Retorna (éxito, mensaje)'''
+        #agrega una nueva tarea. Retorna (éxito, mensaje)
         if not self.validar_importancia(importancia):
             return False, "Importancia debe ser 1, 2 o 3"
         
@@ -39,14 +39,14 @@ class TareaViewModel:
     
     def actualizar_nombre_tarea(self, username: str, nombre_antiguo: str, 
                                 nombre_nuevo: str) -> tuple[bool, str]:
-        '''Actualiza el nombre de una tarea. Retorna (éxito, mensaje)'''
+        #actualiza el nombre de una tarea. Retorna (éxito, mensaje)
         if self.repository.actualizar_nombre_tarea(username, nombre_antiguo, nombre_nuevo):
             return True, f"Tarea renombrada de '{nombre_antiguo}' a '{nombre_nuevo}'"
         return False, "Error al actualizar nombre de tarea"
     
     def actualizar_importancia(self, username: str, nombre_tarea: str, 
                                importancia: int) -> tuple[bool, str]:
-        '''Actualiza la importancia de una tarea. Retorna (éxito, mensaje)'''
+        #actualiza la importancia de una tarea. Retorna (éxito, mensaje)
         if not self.validar_importancia(importancia):
             return False, "Importancia debe ser 1, 2 o 3"
         
@@ -57,7 +57,7 @@ class TareaViewModel:
     
     def actualizar_categoria(self, username: str, nombre_tarea: str, 
                             categoria: int) -> tuple[bool, str]:
-        '''Actualiza la categoría de una tarea. Retorna (éxito, mensaje)'''
+        #actualiza la categoría de una tarea. Retorna (éxito, mensaje)
         if not self.validar_categoria(categoria):
             return False, "Categoría debe ser 1, 2 o 3"
         
@@ -68,7 +68,7 @@ class TareaViewModel:
     
     def actualizar_tiempo(self, username: str, nombre_tarea: str, 
                          tiempo: int) -> tuple[bool, str]:
-        '''Actualiza el tiempo de una tarea. Retorna (éxito, mensaje)'''
+        #actualiza el tiempo de una tarea. Retorna (éxito, mensaje)
         if not self.validar_tiempo(tiempo):
             return False, "El tiempo debe ser mayor a 0"
         
@@ -78,17 +78,17 @@ class TareaViewModel:
         return False, "Error al actualizar tiempo"
     
     def marcar_completada(self, username: str, nombre_tarea: str) -> tuple[bool, str]:
-        '''Marca una tarea como completada. Retorna (éxito, mensaje)'''
+        #marca una tarea como completada. Retorna (éxito, mensaje)
         if self.repository.actualizar_campo_tarea(username, nombre_tarea, "Estado", True):
             return True, f"Tarea '{nombre_tarea}' marcada como completada"
         return False, "Error al marcar tarea como completada"
     
     def eliminar_tarea(self, username: str, nombre_tarea: str) -> tuple[bool, str]:
-        '''Elimina una tarea. Retorna (éxito, mensaje)'''
+        #elimina una tarea. Retorna (éxito, mensaje)
         if self.repository.eliminar_tarea(username, nombre_tarea):
             return True, f"Tarea '{nombre_tarea}' eliminada exitosamente"
         return False, "Error al eliminar tarea"
     
     def obtener_tareas(self, username: str) -> Optional[Dict]:
-        '''Obtiene todas las tareas de un usuario'''
+        #obtiene todas las tareas de un usuario
         return self.repository.obtener_tareas(username)

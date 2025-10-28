@@ -2,7 +2,7 @@ from typing import Dict, Any
 
 
 class Tarea:
-    '''Modelo de Tarea'''
+    #modelo de Tarea
     def __init__(self, nombre: str, importancia: int, categoria: int, 
                  tiempo: int, estado: bool = False):
         self.nombre = nombre

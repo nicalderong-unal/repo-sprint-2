@@ -4,13 +4,13 @@ from repo.repo_usuario import UsuarioRepository
 
 
 class UsuarioViewModel:
-    '''ViewModel para gestión de usuarios'''
+    #viewModel para gestión de usuarios
     def __init__(self):
         self.repository = UsuarioRepository()
         self.usuario_actual: Optional[str] = None
     
     def crear_usuario(self, username: str, password: str) -> tuple[bool, str]:
-        '''Crea un nuevo usuario. Retorna (éxito, mensaje)'''
+        #crea un nuevo usuario. Retorna (éxito, mensaje)
         if not username or not password:
             return False, "Usuario y contraseña son obligatorios"
         
@@ -20,7 +20,7 @@ class UsuarioViewModel:
         return False, "Error al crear usuario"
     
     def login(self, username: str, password: str) -> tuple[bool, str]:
-        '''Intenta iniciar sesión. Retorna (éxito, mensaje)'''
+        #intenta iniciar sesión. Retorna (éxito, mensaje)
         usuarios = self.repository.obtener_todos_usuarios()
         
         if usuarios is None:

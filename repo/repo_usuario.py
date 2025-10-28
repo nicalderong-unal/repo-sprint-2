@@ -4,7 +4,7 @@ from model.usuario import Usuario
 
 
 class UsuarioRepository:
-    '''Repositorio para operaciones de Usuario en Firebase'''
+    #repo para operaciones de Usuario en Firebase
     def __init__(self):
         self.config = FirebaseConfig.get_instance()
         self.config.initialize()

@@ -4,7 +4,7 @@ from model.tarea import Tarea
 
 
 class TareaRepository:
-    '''Repositorio para operaciones de Tarea en Firebase'''
+    #repo para operaciones de Tarea en Firebase
     def __init__(self):
         self.config = FirebaseConfig.get_instance()
         self.config.initialize()

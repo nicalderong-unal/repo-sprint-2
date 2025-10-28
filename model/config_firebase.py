@@ -3,7 +3,7 @@ from firebase_admin import db, credentials
 
 
 class FirebaseConfig:
-    '''Configuración Singleton de Firebase'''
+    #Configuración Singleton de Firebase
     _instance = None
     _initialized = False
     

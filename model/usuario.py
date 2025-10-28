@@ -2,7 +2,7 @@ from typing import Dict
 
 
 class Usuario:
-    '''Modelo de Usuario'''
+    #modelo de Usuario
     def __init__(self, username: str, password: str = ""):
         self.username = username
         self.password = password

@@ -35,7 +35,7 @@ class ConsoleView:
         return exito
     
     def login(self) -> bool:
-        #Flujo de inicio de sesión
+        #inicio de sesión
         username = self.solicitar_input("Ingrese su usuario: ")
         password = self.solicitar_input("Ingrese su contraseña: ")
         
@@ -55,7 +55,7 @@ class ConsoleView:
         return exito
     
     def agregar_tarea(self):
-        #Flujo para agregar una nueva tarea
+        #agregar una nueva tarea
         username = self.usuario_vm.obtener_usuario_actual()
         if not username:
             self.mostrar_mensaje("Debe iniciar sesión primero")
@@ -83,7 +83,7 @@ class ConsoleView:
         self.mostrar_mensaje(mensaje)
     
     def actualizar_tarea(self):
-        #Flujo para actualizar una tarea
+        #actualizar una tarea
         username = self.usuario_vm.obtener_usuario_actual()
         if not username:
             self.mostrar_mensaje("Debe iniciar sesión primero")
@@ -134,7 +134,7 @@ class ConsoleView:
             self.mostrar_mensaje("Opción no válida")
     
     def eliminar_tarea(self):
-        #Flujo para eliminar una tarea
+        #eliminar una tarea
         username = self.usuario_vm.obtener_usuario_actual()
         if not username:
             self.mostrar_mensaje("Debe iniciar sesión primero")
@@ -145,7 +145,7 @@ class ConsoleView:
         self.mostrar_mensaje(mensaje)
     
     def leer_tareas(self):
-        #Flujo para listar todas las tareas
+        #listar todas las tareas
         username = self.usuario_vm.obtener_usuario_actual()
         if not username:
             self.mostrar_mensaje("Debe iniciar sesión primero")
@@ -165,7 +165,7 @@ class ConsoleView:
             self.mostrar_mensaje("No hay tareas registradas.")
     
     def marcar_completada(self):
-        '''Flujo para marcar una tarea como completada'''
+        #marcar una tarea como completada
         username = self.usuario_vm.obtener_usuario_actual()
         if not username:
             self.mostrar_mensaje("Debe iniciar sesión primero")
@@ -176,7 +176,7 @@ class ConsoleView:
         self.mostrar_mensaje(mensaje)
     
     def menu_principal(self):
-        '''Menú principal de la aplicación'''
+        #Menú principal de la aplicación
         while True:
             self.mostrar_mensaje("\n=== GESTOR DE TAREAS ===")
             self.mostrar_mensaje("1. Crear usuario")
@@ -188,7 +188,7 @@ class ConsoleView:
             self.mostrar_mensaje("7. Marcar tarea como completada")
             self.mostrar_mensaje("8. Salir")
             
-            opcion = self.solicitar_input_int("\\nSeleccione una opción: ")
+            opcion = self.solicitar_input_int("\nSeleccione una opción: ")
             
             if opcion == 1:
                 self.crear_usuario()
