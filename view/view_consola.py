@@ -4,21 +4,21 @@ from viewmodel.tarea_viewmodel import TareaViewModel
 
 
 class ConsoleView:
-    '''Vista de consola para interactuar con el usuario'''
+    #vista de consola para interactuar con el usuario
     def __init__(self):
         self.usuario_vm = UsuarioViewModel()
         self.tarea_vm = TareaViewModel()
     
     def mostrar_mensaje(self, mensaje: str):
-        '''Muestra un mensaje en consola'''
+        #mostrar un mensaje en consola
         print(mensaje)
     
     def solicitar_input(self, prompt: str) -> str:
-        '''Solicita entrada del usuario'''
+        #pedir entrada del usuario
         return input(prompt)
     
     def solicitar_input_int(self, prompt: str) -> int:
-        '''Solicita entrada numérica del usuario'''
+        #pedir entrada numérica del usuario
         while True:
             try:
                 return int(input(prompt))
@@ -26,7 +26,7 @@ class ConsoleView:
                 print("Por favor ingrese un número válido")
     
     def crear_usuario(self):
-        '''Flujo para crear un nuevo usuario'''
+        #crear un nuevo usuario
         username = self.solicitar_input("Crea el nombre de tu nueva cuenta: ")
         password = self.solicitar_input("Crea una contraseña para tu nueva cuenta: ")
         
@@ -35,7 +35,7 @@ class ConsoleView:
         return exito
     
     def login(self) -> bool:
-        '''Flujo de inicio de sesión'''
+        #Flujo de inicio de sesión
         username = self.solicitar_input("Ingrese su usuario: ")
         password = self.solicitar_input("Ingrese su contraseña: ")
         
@@ -55,7 +55,7 @@ class ConsoleView:
         return exito
     
     def agregar_tarea(self):
-        '''Flujo para agregar una nueva tarea'''
+        #Flujo para agregar una nueva tarea
         username = self.usuario_vm.obtener_usuario_actual()
         if not username:
             self.mostrar_mensaje("Debe iniciar sesión primero")
@@ -83,7 +83,7 @@ class ConsoleView:
         self.mostrar_mensaje(mensaje)
     
     def actualizar_tarea(self):
-        '''Flujo para actualizar una tarea'''
+        #Flujo para actualizar una tarea
         username = self.usuario_vm.obtener_usuario_actual()
         if not username:
             self.mostrar_mensaje("Debe iniciar sesión primero")
@@ -134,7 +134,7 @@ class ConsoleView:
             self.mostrar_mensaje("Opción no válida")
     
     def eliminar_tarea(self):
-        '''Flujo para eliminar una tarea'''
+        #Flujo para eliminar una tarea
         username = self.usuario_vm.obtener_usuario_actual()
         if not username:
             self.mostrar_mensaje("Debe iniciar sesión primero")
@@ -145,7 +145,7 @@ class ConsoleView:
         self.mostrar_mensaje(mensaje)
     
     def leer_tareas(self):
-        '''Flujo para listar todas las tareas'''
+        #Flujo para listar todas las tareas
         username = self.usuario_vm.obtener_usuario_actual()
         if not username:
             self.mostrar_mensaje("Debe iniciar sesión primero")
@@ -154,7 +154,7 @@ class ConsoleView:
         tareas = self.tarea_vm.obtener_tareas(username)
         
         if tareas:
-            self.mostrar_mensaje("\\n=== TAREAS ===")
+            self.mostrar_mensaje("\n=== TAREAS ===")
             for nombre, datos in tareas.items():
                 self.mostrar_mensaje(f"\\nTarea: {nombre}")
                 self.mostrar_mensaje(f"  Importancia: {datos.get('importancia de la Tarea', 'N/A')}")
@@ -178,7 +178,7 @@ class ConsoleView:
     def menu_principal(self):
         '''Menú principal de la aplicación'''
         while True:
-            self.mostrar_mensaje("\\n=== GESTOR DE TAREAS ===")
+            self.mostrar_mensaje("\n=== GESTOR DE TAREAS ===")
             self.mostrar_mensaje("1. Crear usuario")
             self.mostrar_mensaje("2. Iniciar sesión")
             self.mostrar_mensaje("3. Agregar tarea")
@@ -205,7 +205,7 @@ class ConsoleView:
             elif opcion == 7:
                 self.marcar_completada()
             elif opcion == 8:
-                self.mostrar_mensaje("¡Hasta luego!")
+                self.mostrar_mensaje("No vuelva. Gracias.")
                 break
             else:
                 self.mostrar_mensaje("Opción no válida")
